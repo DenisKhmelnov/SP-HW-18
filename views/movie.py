@@ -29,14 +29,14 @@ class MovieView(Resource):
     def get(self, uid):
         return movie_schema.dump([movie_service.get_movie_by_id(uid)]), 200
 
-    def put(self):
+    def put(self, uid):
         if movie_service.update_movie(flask.request.json):
             return "Фильм обновился", 200
         else:
             return "Ошибка обновления фильма", 200
 
-    def delete(self):
-        if movie_service.delete_movie():
+    def delete(self, uid):
+        if movie_service.delete_movie(uid):
             return "Фильм удалился", 200
         else:
             return "Ошибка удаления фильма", 200

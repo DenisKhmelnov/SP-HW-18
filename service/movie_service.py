@@ -17,8 +17,8 @@ class MovieService:
     def get_movie_by_kwargs(self, **kwargs):
         return self.movie_dao.get_movies_by_params(**kwargs)
 
-    def create_movie(self, **kwargs):
-        return self.movie_dao.create_movie(**kwargs)
+    def create_movie(self, movie):
+        return self.movie_dao.create_movie(movie)
 
     def update_movie(self, **kwargs):
         return self.movie_dao.get_movies_by_params(**kwargs)

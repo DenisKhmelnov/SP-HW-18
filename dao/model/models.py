@@ -23,7 +23,7 @@ class Movie(db.Model):
     id = db.Column(Integer, primary_key=True)
     description = db.Column(String)
     rating = db.Column(Float)
-    title = db.Column
+    title = db.Column(String)
     trailer = db.Column(String)
     year = db.Column(Integer)
     director_id = db.Column(Integer, db.ForeignKey(f'{Director.__tablename__}.id'))

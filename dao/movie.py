@@ -14,10 +14,11 @@ class MovieDAO:
     def get_movies_by_params(self, **kwargs):
         return self.session.query(Movie).filter_by(**kwargs).all()
 
-    def create_movie(self, **kwargs):
+    def create_movie(self, movie):
         try:
-            new_movie = Movie(**kwargs)
-            self.session.query.add(new_movie)
+            new_movie = Movie(movie)
+            self.session.add(new_movie)
+            self.session.commit()
             return True
         except Exception as e:
             self.session.rollback()
