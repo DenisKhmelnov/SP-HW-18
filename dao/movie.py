@@ -16,16 +16,16 @@ class MovieDAO:
 
     def create_movie(self, movie):
         try:
-            new_movie = Movie(movie)
+            new_movie = Movie(**movie)
             self.session.add(new_movie)
             self.session.commit()
             return True
         except Exception as e:
             self.session.rollback()
             return False
-    def update_movie(self, **kwargs):
+    def update_movie(self, movie, uid):
         try:
-            self.session.query(Movie).filter(Movie.id == kwargs.get('id')).update(kwargs)
+            self.session.query(Movie).filter(Movie.id == uid).update(movie)
             self.session.commit()
             return True
         except Exception as e:
@@ -35,6 +35,7 @@ class MovieDAO:
     def delete_movie(self, uid):
         try:
             self.session.query(Movie).filter(Movie.id == uid).delete()
+            self.session.commit()
             return True
         except Exception as e:
             self.session.rollback()

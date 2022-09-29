@@ -30,7 +30,8 @@ class MovieView(Resource):
         return movie_schema.dump([movie_service.get_movie_by_id(uid)]), 200
 
     def put(self, uid):
-        if movie_service.update_movie(flask.request.json):
+        movie = flask.request.json
+        if movie_service.update_movie(movie, uid):
             return "Фильм обновился", 200
         else:
             return "Ошибка обновления фильма", 200

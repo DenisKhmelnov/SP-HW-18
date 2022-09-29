@@ -9,7 +9,7 @@ class GenreService:
         self.genre_dao = genre_dao
 
     def get_genres(self) -> List["GenreDAO"]:
-        return self.genre_dao.get_all_genress()
+        return self.genre_dao.get_all_genres()
 
     def get_genre_by_id(self, uid):
         return self.genre_dao.get_genres_by_id(uid)
